@@ -198,10 +198,7 @@ benchmark how confident we are in predictions with inputted articles after train
 Accuracy can be calculated with:
 
 ```
-Accuracy=
-```
-```
-# of correct predictions
+Accuracy=# of correct predictions
 length of data
 ```
 3.4.2 F1 Score
@@ -212,24 +209,15 @@ were actually reliable). while recall measures what proportion of actual positiv
 positives. Precision and recall are almost identical in their calculations:
 
 ```
-P recision=
-True Positives
-True Positives+False Positives
+P recision= (True Positives) / (True Positives + False Positives)
+Recall= (True Positives) / (True Positives + False Negatives)
 ```
-```
-Recall=
-```
-True Positives
-True Positives+False Negatives
 Because both are quite similar, we chose to measure F1 scores because the F1 score combines
 precision and recall. This allows for a more concise and general measure of performance. Using the
 equations for precision and recall, the F1 score is then calculated as:
 
-#### F1 =
-
 ```
-2 ×Precision×Recall
-Precision+Recall
+F1 = (2 × Precision × Recall) / (Precision + Recall)
 ```
 3.4.3 AUROC Curve
 
@@ -240,7 +228,6 @@ across all its thresholds (Google, 2022). While accuracy and F1 can measure over
 AUROC measures the ability the model has to make distinguish samples. A high AUROC indicates
 excellent resolution, an AUROC at 50% is the same as someone making random guesses, and an area
 near zero means the model makes practically all of its decisions incorrectly.
-
 
 ## 4 Results
 
