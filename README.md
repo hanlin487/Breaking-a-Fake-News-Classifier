@@ -145,30 +145,21 @@ hopes of finding insight about how the model is successfully identifying fake ne
 
 ```
 1.Trigrams: AI-generated articles created using the most prevalent trigrams found within the
-reliable article training dataset (see Figure 1).
+reliable article training dataset.
 ```
 ```
 2.Reliable News Writing Style: AI-generated articles emulating the writing style characteristic
-of an article in the reliable article training dataset (common words in ’reliable’ articles shown in
-Figure 2).
+of an article in the reliable article training dataset (common words in ’reliable’ articles shown in.
 ```
 ```
 3.BBC News Writing Style: AI-generated articles emulating the writing style of a BBC News
 article (FitzGerald, 2024)
 ```
-The topics in the original training and testing datasets were all similar (see Figure 2). The AI
+The topics in the original training and testing datasets were all similar. The AI
 generated dataset has more subject variety because we provided the AI with a subject (i.e politics,
 tech, etc) and prompted it to write about any news in that sector. Each method produced 50 articles,
 for a total of 150 AI-generated articles.
 
-
-Figure 1: The top 20 Frequently Occurring Fake News Trigrams from articles marked as ”reliable” in
-our dataset.
-
-```
-Figure 2: A WordCloud representing the most frequent words present in real articles, where the
-larger the word the more common it is.
-```
 ### 3.4 Metrics and Data Collection
 
 We chose three metrics to measure model performace: accuracy, F1 Score, and Area under the Receiver
@@ -262,21 +253,12 @@ mance. Accuracy scores drop to approximately 50% and F1 scores plummet to 0, sug
 can’t confidently classify true positives. The AUROC scores also show that with a 0.0005 learning rate,
 the model makes mostly incorrect decisions, and at 0.005, it’s only as good as guessing (see Table 2).
 Models with increased learning rates consistently oscillate and minimally improve across 2800 steps.
-This erratic behavior is consistent with the training and validation loss graphs in Figure 4.
+This erratic behavior is consistent with the training and validation loss graphs.
 Models with larger learning rates will converge on a result much quicker, updating their weights
 more significantly, resulting in the instability. These results show us that the model is sensitive to the
 data and susceptible to overstepping the most optimal point in the gradient descent function, leading
 to oscillations observed in the graphs.
 
-```
-(a) Accuracy Scores during training. (b) F1 Scores during training.
-```
-```
-(c) AUROC Scores during training.
-```
-```
-Figure 3: Metrics of each model trained with learning rates 5.e−5, 5.e−4 and 5.e−3.
-```
 ```
 Table 2: Model Evaluation Metrics with Different Learning Rates from Hugging Face’s ’.evaluate()’
 Function.
@@ -288,16 +270,6 @@ Learning Rate Test Accuracy Val. Accuracy F1 Score AUROC
 5 .e− 3 0.49285 0.56931 0.00000 0.
 ```
 
-```
-(a) Learning Rate = 5.e−5. (b) Learning Rate = 5.e−4.
-```
-```
-(c) Learning Rate = 5.e−3.
-```
-```
-Figure 4: Training and Validation Losses during training of each model with learning rates
-5 .e− 5 , 5 .e−4 and 5.e−3.
-```
 ```
 Table 3: Model Training and Evaluation Loss with Different Learning Rates from Hugging Face’s
 ’.evaluate()’ Function.
@@ -320,21 +292,6 @@ Without running the other tests, this would indicate the model likely doesn’t 
 negatively respond to small decreases in sample size. However, its ability to still achieve extremely
 high training performance metrics, despite only with 5% of the original training set, can still imply
 it’s adapting too closely to the training data.
-
-
-Figure 5: Accuracy, F1 Score, AUROC, and Training and Validation losses of the model trained with
-learning rate 5.e−5 and 10,000 samples.
-
-Figure 6: Accuracy, F1 Score, AUROC, and Training and Validation losses of the model trained with
-learning rate 5.e−5 and 5,000 samples.
-
-
-Figure 7: Accuracy, F1 Score, AUROC, and Training and Validation losses of the model trained with
-learning rate 5.e−5 and 1,000 samples.
-
-Figure 8: Accuracy, F1 Score, AUROC, and Training and Validation losses of the model trained with
-learning rate 5.e−5 and 100 samples.
-
 
 ```
 Table 4: Model Evaluation Metrics with Different Sample Sizes from Hugging Face’s ’.evaluate()’
@@ -369,10 +326,6 @@ difference between models like the model trained with the learning rate 5e-5. Ho
 trained on a 5e-5 learning rate may be better since it was trained on more data; it utilized the full
 20,800 samples of the training set compared to 10,000.
 
-Figure 9: A Heatmap displaying all models trained with varying sample sizes and learning rates with
-their metrics.
-
-
 ### 4.4 Model Tested on an Alternate Dataset
 
 Because it had the best overall performance trained on theentiredataset, we used the model whose
@@ -387,35 +340,8 @@ articles was only 1.32% and the accuracy of the dataset consisting of all fake n
 implies that the model is inadequate at determining if an article is real, but can reliably tell if an
 article is fake.
 
-```
-(a) Accuracy Scores (b) F1 Scores
-```
-```
-Figure 10: Metrics of the best model with the alternative dataset (Accuracy and F1).
-```
-```
-(a) AUROC Scores
-```
-```
-Figure 11: Metrics of the best model tested with the alternative dataset (AUROC).
-```
-
-```
-(a) Accuracy score of real articles from alternate
-dataset (Final: 1.32%).
-```
-```
-(b) Accuracy score of fake articles from alternate
-dataset (Final: 99.81%).
-```
-```
-Figure 12: Metrics of the best model with the alternative dataset (Accuracy and F1).
-```
 ### 4.5 Model Accuracy on AI-Generated articles
 
-```
-Figure 13: Distribution of AI Articles Classified as Real or Fake.
-```
 The model successfully categorized a majority of the AI generated articles as fake with 96.7% of articles
 categorized as unreliable (5 of 150 articles were deemed real). Of those 5 articles, all of them were
 articles writen using trigrams. It appears that when given texts that the model trained to associate
@@ -484,82 +410,3 @@ This study reinforces the need to be skeptical and inquisitive when evaluating t
 guage modeling tools. The advent of a fake news detector does not necessarily mean that the burden
 of manual fact checking has been lifted, rather it raises responsibility for readers to look upon news
 with a more critical eye.
-
-## 7 Contributions
-
-Josh: Helped create alternative and AI datasets and helped analyze their results. Also did the write-
-up portion on testing the alternative and AI datasets.
-
-Matt: Wrote out the scaffolded model, came up with and explained all the testing methods and
-metrics used, and trained models using varying learning rates. Worked on LATEXtypsetting; creating
-
-
-graphs and other visuals such as the WordCloud, heatmap, and line graphs; slides, and helped revise
-sections.
-
-Kasey: Researched background, methods, and created discussion. Provided linguistic backing and
-literature to form argument. Edited deliverable and slides to create cohesive flow.
-
-Kaylee: Researched background, developed introduction and motives behind project, helped research
-and explain graphed outputs. Helped write rough drafts of slides and deliverable sections.
-
-Hanlin: Trained model on varying sample sizes and created graphs to summarize model performance
-with additional metrics, and wrote about the results in final report and the slides.
-
-Ananya: Worked on the methods section and parts of the discussion. Created slides for the methods
-portion and created the appendix in the final deliverable.
-
-Chloe: Researched the BERT model and methodology. Wrote the groundwork and outline for the
-methods section. Helped format the final deliverable’s visuals and citations into LATEX.
-
-## 8 Appendix
-
-HuggingFace: A machine learning platform where it helps users build, deploy, and train machine
-learning models. Includes Transformer library used to create the class for the model and use evaluation
-functions.
-
-Matplotlib:Used to create data visualizers such as line graphs and pie charts.
-
-Seaborn:Used to create heatmap to visualize metrics across all models and find the best performing
-one. Used to visualize data distribution to check if it’s balanced.
-
-NLtk: Allows python programs to work with human language data and process natural language.
-Made it easy for us to to NLP processing to visualize article contents usingn-grams.
-
-Numpy: Scientific computing library used to manipulate large amounts of data so that it can be
-used in ML models.
-
-Pandas:Library for open source data analysis and manipulation. Used to convert .csv files to Python
-readable dataframes.
-
-PyTorch: This has a wide variety of tools that support computer vision, natural language pro-
-cessing, and other ML algorithms. Converted our pandas dataframe into PyTorch datasets to split
-training and validation sets during trainig.
-
-Sklearn/Scikit:Provided easy-to-use functions for calculating accuracy, F1 scores, and AUROC.
-
-Transformers:Neural networks based on learning context and tracking sequential data.
-
-## 9 References
-
-1. Ferreira Caceres, Maria Mercedes, et al. “The Impact of Misinformation on the COVID-19 Pan-
-    demic.” AIMS Public Health, vol. 9, no. 2, 12 Jan. 2022, pp. 262–277, [http://www.aimspress.com/aimspress-](http://www.aimspress.com/aimspress-)
-    data/aimsph/2022/2/PDF/publichealth-09-02-018.pdf, https://doi.org/10.3934/publichealth.2022018.
-2. Bozku ̧s, E. (2022).Fake News Detection Datasets.Kaggle. https://www.kaggle.com/datasets/emineyetm/fake-
-    news-detection-datasets.
-
-
-3. Grieve, J., & Woodfield, H. (2023). The Language of Fake News. Cambridge: Cambridge
-    University Press.
-4. Jurafsky, D., & Martin, J. (2023).Speech and Language Processing.Stanford University Press.
-5. Lifferth, W. (2018).Fake News.Kaggle. https://www.kaggle.com/c/fake-news/overview.
-6. Payong, A., & Fadheli, A. (2022). Fake news detection in python - the python code. Python
-    Code. https://thepythoncode.com/article/fake-news-classification-in-python.
-7. Patel, S. (2021).Fake News Detection.Kaggle. https://www.kaggle.com/c/fake-news/overview.
-8. FitzGerald, James. “Texas Storms: Power Cuts Expected for Days.” BBC News, 29 May 2024,
-    [http://www.bbc.com/news/articles/czdd5y9d25jo.amp..](http://www.bbc.com/news/articles/czdd5y9d25jo.amp..) Accessed 12 June 2024.
-9. HuggingFace. “Trainer.” Huggingface.co, 2024, huggingface.co/docs/transformers/en/mainclasses/trainer.
-10. Bozkus, E. (2022).Fake News Detection DatasetsKaggle. https://www.kaggle.com/datasets/emineyetm/fake-
-news-detection-datasets.
-
-
