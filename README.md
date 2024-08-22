@@ -85,9 +85,8 @@ class takes in:
 - computemetrics: Function that computes metrics. Our function utilizes scikit functions that
     compute accuracy, F1, and AUROC.
 
-```
 And for theargs, it’s initialized with a separate class that takes:
-```
+
 - numtrainepochs: Total number of epochs to train with
 - perdevicetrainbatchsize: Total number of samples to train with per batch
 - perdeviceevalbatchsize: Total number of samples to evaluate with per batch
